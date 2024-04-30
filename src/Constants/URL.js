@@ -1,0 +1,1 @@
+export const API_URL="https://662d0ff60547cdcde9dfd5c3.mockapi.io/flats"
