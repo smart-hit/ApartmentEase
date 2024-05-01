@@ -1,0 +1,52 @@
+/* Basic styles */
+.about-us {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: aliceblue;
+    padding-bottom: 7%;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  h2 {
+    margin-top: 30px;
+    text-align: center;
+  }
+  
+  /* Styles for the founders section */
+  .founders {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 20px 0;
+  }
+  
+  .founder {
+    text-align: center;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: calc(33% - 40px);  /* Adjust width as needed */
+  }
+  
+  .founder img {
+    width: 100%;
+    border-radius: 50%;  /* For circular images */
+    margin-bottom: 10px;
+  }
+  
+  .founder h3 {
+    margin-bottom: 5px;
+  }
+  .ab{
+    width: 900px;
+    margin: auto;
+  }
+  .flex{
+    display: flex;
+    justify-content: space-evenly;
+  }

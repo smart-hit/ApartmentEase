@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
-
+import img from '../images/admin.png'
 
 
 function Admin() {
@@ -29,7 +29,7 @@ function Admin() {
      });
  };
 
-  const [flatNo, setFlatNo] = useState('');
+  const [flatNo, setFlatNo] = useState('A1');
   const [apiData, setAPIData] = useState([]);
   const [selectedFlat, setSelectedFlat] = useState(null); // State for the matching flat
   const [isChecked, setIsChecked] = useState(false);
@@ -74,16 +74,28 @@ function Admin() {
   }, [flatNo, apiData]); // Re-run when flatNo or apiData changes
 
   return (
+    <div className="ad-main">
+     
+       <div className="admin-img">
+       <h1>αdmin [Ctrl] Pαnel</h1>
+        <img width='500px' src={img} alt="" />
+      </div>
     <div className="Admin-main">
+     
       
       <table>
         <tr>
+          
+        <input type="text" name='flatno' placeholder="Enter the Flat no" value={flatNo} onChange={handleInputChange} />
+      <button className="btn2" onClick={handleInputChange}>Search</button>
+      
+      
           {selectedFlat ? (
+
             <div >
             
             <form ref={form} onSubmit={sendEmail}>
-            <input type="text" name='flatno' placeholder="Enter the Flat no" value={flatNo} onChange={handleInputChange} />
-      <button className="btn2" onClick={handleInputChange}>Search</button>
+            <input id='invi'type="text" name='flatno' placeholder="Enter the Flat no" value={flatNo} />
       <div className="Admin-flatdetails"><td>Ownername: {selectedFlat.Ownername}</td>
     <td>No of residents: {selectedFlat.noofres}</td>
     </div>
@@ -93,19 +105,18 @@ function Admin() {
         <br></br>
         <input id="btn1" type='submit' value='Send Request'></input>
         </form>
-      
+      <br></br>
         <div id='myDiv' style={{ backgroundColor: isChecked ? 'green' : 'red', padding: '10px', color: 'white' }} onClick={Change}>
             Checked: {isChecked ? 'Yes' : 'No'}
           </div>
             </div>
           ) : (
-            <td>No flat found.</td>
+            <div>No flat found.</div>
           )}
         </tr>
       </table>
-      <div>
-       
-      </div>
+    
+    </div>
     </div>
   );
 }

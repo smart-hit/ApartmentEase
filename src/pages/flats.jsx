@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import flatimg from '../images/house.png'
-
+import emailjs from '@emailjs/browser';
 function Flat(){
     const { flatno } = useParams(); 
     const[apiData,setAPIData]=useState([]);
@@ -17,6 +17,28 @@ function Flat(){
     },[]);
     const foundObject = apiData.find(obj => obj.flatno === flatno);
     console.log(foundObject);
+    const sendEnquiryEmail = () => {
+        const Params = {
+          flatno: foundObject?.flatno, // Replace with specific data to send
+          Ownername: foundObject?.Ownername, // Replace with specific data to send
+          // Add other relevant details to the email content (e.g., user email, message)
+          
+        };
+        console.log(Params);
+    
+        emailjs
+          .sendForm('service_jkdajrc', 'template_txl7bkd', Params, 'uA6A1g-CQnP-iOqK0') // Replace with your template ID and user ID
+          .then(
+            (result) => {
+              console.log(result.text);
+              alert('Enquiry email sent successfully!');
+            },
+            (error) => {
+              console.error(error.text);
+              alert('An error occurred while sending the email. Please try again later.');
+            }
+          );
+      };
     return(
         
     <div className="flat-details">
@@ -52,6 +74,11 @@ function Flat(){
             <tr>
             <td colSpan='2'>
             <button id='btn1'>Pay now</button>
+            </td>
+            </tr>
+            <tr>
+            <td colSpan='2'>
+            <button id='btn3' onClick={sendEnquiryEmail}>Raise an Enquiry</button>
             </td>
             </tr>
         </table>

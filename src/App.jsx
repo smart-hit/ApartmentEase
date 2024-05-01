@@ -4,7 +4,7 @@ import './App.css';
 import Home from './pages/home';
 import Flat from './pages/flats';
 import Navbar from './components/navbar';
-import Test from './pages/test';
+import AboutUs from './pages/about';
 import Admin from './pages/admin';
 import FlatDetails from './pages/Auth'
 
@@ -37,7 +37,7 @@ function App() {
               </IsLoggedInContext.Consumer>
             }
           />
-          <Route path="/home" element={<Admin />} />
+          <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/flats/:flatNo" element={<FlatDetails />} />
         </Routes>
       </div>
